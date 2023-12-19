@@ -1,0 +1,12 @@
+<div input="text" class="display">{{ receivedChildMessage }}</div>
+
+<app-button (childButtonEvent)="getMessage($event)"></app-button>
+<app-action (showResults)="calulatetotal()" (actionData)="operator($event)"></app-action>
+<button
+type="button"
+class="operator"
+class="equal-sign"
+(click)="resetCalculator()"
+>
+c
+</button>
