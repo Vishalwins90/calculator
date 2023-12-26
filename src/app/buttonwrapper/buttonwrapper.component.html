@@ -1,12 +1,12 @@
-<div input="text" class="display">{{ receivedChildMessage }}</div>
 
-<app-button (childButtonEvent)="getMessage($event)"></app-button>
-<app-action (showResults)="calulatetotal()" (actionData)="operator($event)"></app-action>
-<button
-type="button"
-class="operator"
-class="equal-sign"
-(click)="resetCalculator()"
->
-c
-</button>
+<div style="display: block;"> 
+    <input class="input" type="text" [(ngModel)]="displayValue" />
+    <app-number-button (operatorClick)="onNumericButtonClick($event)"></app-number-button>
+    <app-action
+      (operatorClick)="onOperatorButtonClick($event)"
+      (clearClick)="onClearClick()"
+      (equalClick)="onEqualClick()"
+    ></app-action>
+  </div>
+
+

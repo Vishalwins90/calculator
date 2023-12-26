@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ButtonComponent } from './button/button.component';
+// import { ButtonComponent } from './button/number-button.component';
 import { CalulatorComponent } from './calulator/calulator.component';
 
 const routes: Routes = [

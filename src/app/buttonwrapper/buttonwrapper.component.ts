@@ -12,70 +12,59 @@ import {
   styleUrls: ['./buttonwrapper.component.css'],
 })
 export class ButtonwrapperComponent implements OnInit {
-  receivedChildMessage: any = 0;
-  @Output() showResults: EventEmitter<boolean> = new EventEmitter<boolean>();
-  data: any = 0;
-  firstValue: number = 0;
-  action: any;
-  display: any;
-  Arry: Array<any> = [];
+  displayValue: string = '';
   constructor() {}
-  ngOnInit() {}
-  getMessage(message: any) {
-  this.receivedChildMessage = message;
-  this.firstValue = parseFloat(message);
-  this.Arry.push(message);
-  console.log(this.Arry)
+
+  ngOnInit() {
+
   }
-  calulatedata(message: any) {
-    this.data = message;
+
+  onNumericButtonClick(value: string) {
+    this.displayValue += value;
   }
-  operator(event: any) {
-    this.receivedChildMessage = event.display;
-    this.display = event.display;
-    this.action = event.action;
-    console.log(this.action);
+
+  onOperatorButtonClick(operator: string) {
+    debugger
+     this.displayValue += operator;
   }
-  total(number: any) {
-    this.receivedChildMessage = number.total;
+
+  onClearClick() {
+    debugger
+    this.displayValue = '';
   }
-  calulatetotal() {
-  // const a = this.firstValue;
-  //  const b = parseFloat(this.receivedChildMessage);
-    let result: any;
-    if (this.action === 'm') {
-      let val = 1;
-      this.Arry.map((item: any) => {
-        val *= Number(item);
-      });
-      result = val;
-    } else if (this.action === 'a') {
-      let val = 0;
-      this.Arry.map((itm: any) => {
-        this.action
-        val +=Number(itm);
-      });
-      result = val;
-    } else if (this.action === 's') {
-      debugger
-      let val = Number(this.Arry[0]);
-      this.Arry.slice(1).map((itm: any) => {
-        val -= Number(itm);
-      });
-      result = val;
-    } else if (this.action === 'd') {
-      let val = Number(this.Arry[0]);
-      if (val !== 0) {
-        this.Arry.slice(1).map((itm: any) => {
-          val /= Number(itm);
-        });
-      }
-      result = val;
+
+  onEqualClick() {
+        let operator = ['+', '-', '*', '/'];
+        let expression = this.displayValue;
+        let result:any;
+        for (let i of operator) {
+            if (expression.includes(i)) {
+              debugger
+                let str = expression.split(i);
+                let firstOperand = parseFloat(str[0]);
+                let secondOperand = parseFloat(str[1]);
+                switch (i) {
+                    case '+': 
+                        result = firstOperand + secondOperand;
+                        break;
+                    case '-':
+                        result = firstOperand - secondOperand;
+                        break;
+                    case '*':
+                        result = firstOperand * secondOperand;
+                        break;
+                    case '/':
+                        result = firstOperand / secondOperand;
+                        break;
+                    default: result = "invalid";
+                        break;
+                }
+                this.displayValue = result.toString();
+              }
+        }
+     
     }
-    this.firstValue = result;
-    this.receivedChildMessage = result.toString();
-  }
-  resetCalculator() {
-    this.receivedChildMessage = 0;
-  }
+    
+
 }
+

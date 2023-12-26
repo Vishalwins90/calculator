@@ -6,31 +6,22 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./action.component.css'],
 })
 export class ActionComponent {
-  @Output() actionData: any = new EventEmitter();
-  @Output() number:any=new EventEmitter();
-  @Output() showResults:  EventEmitter<boolean> = new EventEmitter<boolean>();
-  display: any;
-  result:any
-  firstValue: any;
-  action: any;
-  operator(action: any) {
-    this.firstValue = parseFloat(this.display);
-    this.action = action;
-    this.display = '';
+ 
+  @Output() operatorClick = new EventEmitter<string>();
+  @Output() clearClick = new EventEmitter<void>();
+  @Output() equalClick = new EventEmitter<void>();
 
-    let operatorObj = {
-      firstValue : this.firstValue,
-      action:this.action,
-      display:this.display
-    };
-    this.actionData.emit(operatorObj)
-  }
-  calc(){
-    this.showResults.emit(true)
+  onOperatorClicked(value: string) {
+    debugger
+    this.operatorClick.emit(value);
   }
 
-  resetCalculator() {
-    this.display = '0';
+  onClearClicked() {
+    this.clearClick.emit();
+  }
+
+  onEqualClicked() {
+    this.equalClick.emit();
   }
 
 }

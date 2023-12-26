@@ -1,24 +1,4 @@
-.calculator {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px;
-  }
-  
-  .calculator-screen {
-    width: 100%;
-    font-size: 5rem;
-    height: 80px;
-    border: none;
-    background-color: #252525;
-    color: #fff;
-    text-align: right;
-    padding-right: 20px;
-    padding-left: 10px;
-  }
+
   
   button {
     height: 60px;
@@ -45,16 +25,5 @@
     background-color: #eaeaea;
   }
   
-  .operator {
-    color: #337cac;
-  }
-  
-  .all-clear {
-    background-color: #f0595f;
-    border-color: #b0353a;
-    color: #fff;
-  }
-  
-  .all-clear:hover {
-    background-color: #f17377;
-  }
+
+
